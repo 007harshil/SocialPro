@@ -29,7 +29,7 @@ module.exports = {
                 let loginData = await influencerModel.findOne({ emailId, password })
                 console.log(loginData)
                 if (loginData) {
-                    if (loginData.status == 'complete') {
+                    if (loginData.status == 'pending') {
                         let key1 = process.env.INFLUENCER_ENCRYPTION_KEY
                         let encryptInfluencer = encrypt(loginData._id, key1)
                         let encryptEmail = encrypt(loginData.emailId, key1)
