@@ -24,7 +24,7 @@ register : (data)=>{
 login:(emailId , password)=>{
     return new Promise(async (res,rej)=>{
         try {
-            let loginData = await advertiserModel.findOne({emailId})
+            let loginData = await advertiserModel.findOne({emailId,password})
             if (loginData) {
                 let key1 = process.env.ADVERTISER_ENCRYPTION_KEY
                 let encryptAdvertiser = encrypt(loginData._id,key1)
