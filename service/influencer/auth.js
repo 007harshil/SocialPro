@@ -76,7 +76,7 @@ module.exports = {
     forgot: (emailId, otp, newPassword, confirmPassword) => {
         return new Promise(async (res, rej) => {
             try {
-                let resp = await commonService.commonOtp(emailId)
+                // let resp = await commonService.commonOtp(emailId)
                 let otpData = await otpModel.findOne({ emailId, otp })
                 if (otpData) {
                     if (newPassword == confirmPassword) {
