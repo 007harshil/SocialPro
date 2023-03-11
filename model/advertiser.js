@@ -59,7 +59,7 @@ const advertiserSchema = new Schema({
         require: true
     },
     panNumber: {
-        type: Number,
+        type: String,
         require: true
     },
     panImgFront: {
