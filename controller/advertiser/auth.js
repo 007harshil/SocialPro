@@ -32,10 +32,14 @@ exports.login = async (req,res)=>{
 exports.checkEmail = async (req, res) => {
     try {
         let resp = await authService.checkEmail(req.body.emailId);
-        if (resp) {
-            return response('advertiser email not found ', resp.data, 200, res)
-        } else {
-            return response("advertiser email found", {}, 500, res)
+        console.log(resp);
+        if (resp.status==404) {
+            return response('advertiser email found', resp.data, 404, res)
+        }else if(resp.status==200){
+            return response('advertiser email not found',resp.data,200,res)
+        }
+         else {
+            return response("something went wrong.", {}, 200, res)
         }
     } catch (err) {
         return response(err.message, err?.error, err.status, res)
