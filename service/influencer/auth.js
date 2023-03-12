@@ -62,6 +62,21 @@ module.exports = {
             }
         })
     },
+    checkEmail:(emailId)=>{
+        return new Promise(async (res,rej)=>{
+            try {
+                let findEmail = await influencerModel.findOne({ emailId })
+                console.log(findEmail);
+                if (findEmail) {
+                    rej({status:404,message:"email already exist."})
+                } else {
+                    res({status:200,data:"continue"});
+                }
+            } catch (error) {
+                rej({status:500,message:"something went wrong."})
+            }
+        })
+    },
 
     //step1 : take emailId from body
     //step2 : verify that email id from mongodb

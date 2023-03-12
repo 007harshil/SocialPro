@@ -29,6 +29,18 @@ exports.login = async (req,res)=>{
         return response(err.message,err?.error,err.status,res)
     }
 }
+exports.checkEmail = async (req, res) => {
+    try {
+        let resp = await authService.checkEmail(req.body.emailId);
+        if (resp) {
+            return response('advertiser email not found ', resp.data, 200, res)
+        } else {
+            return response("advertiser email found", {}, 500, res)
+        }
+    } catch (err) {
+        return response(err.message, err?.error, err.status, res)
+    }
+}
 
 exports.forgot = async (req, res) => {
     try {
