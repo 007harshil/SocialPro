@@ -12,6 +12,7 @@ authRoute.get('/',(req,res)=>{
 authRoute.post('/register',advertiserEmailCheck,authController.register)
 authRoute.post('/login',authController.login)
 authRoute.post("/forgotPass",authController.forgot);
+authRoute.post("/checkEmail",authController.checkEmail);
 authRoute.post("/changePass",verifyAdvertiserToken,authController.changePass);
 
 module.exports = authRoute

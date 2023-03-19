@@ -29,6 +29,20 @@ exports.login = async (req, res) => {
         return response(err.message, err?.error, err.status, res)
     }
 }
+exports.checkEmail = async (req, res) => {
+    try {
+        let resp = await authService.checkEmail(req.body.emailId);
+        if (resp.status==404) {
+            return response('influencer email found ', resp.data, 404, res)
+        }else if(resp.status==200){
+            return response('influencer email not found',resp.data,200,res)
+        } else {
+            return response("influencer email found", {}, 500, res)
+        }
+    } catch (err) {
+        return response(err.message, err?.error, err.status, res)
+    }
+}
 
 exports.forgot = async (req, res) => {
     try {
