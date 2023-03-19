@@ -81,6 +81,38 @@ delete: (_id) => {
             rej({ status: 500, error: err, message: "Something Went Wrong !!" })
         }
     })
+},
+
+getData:()=>{
+    return new Promise(async(res,rej)=>{
+        try {
+            let getData1 = await advertiserModel.find({});
+            if (getData1) {
+                res({status:200,data:getData1})
+            } else {
+                res({status:400,message:"No Any data Yet..."})
+                
+            }
+        } catch (err) {
+            rej({status:500,error:err,message:"Something Went Wrong !!"})
+        }
+    })
+},
+
+
+approve:(id)=>{
+    return new Promise(async (res,rej)=>{
+        try {
+            let getData = await advertiserModel.findByIdAndUpdate(id,{status:"complete"},{new:true});
+            if (getData) {
+                res({status:200,data:"Advertiser Status Updated.."});
+            } else {
+                rej({status:400,message:"Advertiser not Found..."})
+            }
+        } catch (err) {
+            rej({status:500,error:err,message:"Something went wrong.."})
+        }
+    })
 }
 }
 

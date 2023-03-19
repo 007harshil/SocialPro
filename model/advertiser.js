@@ -23,6 +23,13 @@ const advertiserSchema = new Schema({
         required: true,
         unique: true
     },
+    emailVerified: { 
+        type:Boolean,
+        default:false 
+    },
+    profilePic: { 
+        type: String,
+    },
     password: {
         type: String,
         required: true
@@ -33,45 +40,38 @@ const advertiserSchema = new Schema({
     },
     gender: {
         type: String,
-        enum: ['male', 'female']
+        require:true,
+        enum['male','female'],
     },
-    dob: {
-        type: Date,
-        required: true
+    zipCode:{
+        type:Number,
+        require:true
     },
-    emailVerified: { 
-        type:Boolean,
-        default:false 
+    panNumber:{
+        type:Number,
+        require:true
     },
-    profilePic: {
-        type: String,
+    panImgFront:{
+        type:String,
+        require:true
     },
-    residentalAdress: {
-        type: String,
-        require: true
+    panImgBack:{
+        type:String,
+        require:true
     },
-    city: {
-        type: String,
-        require: true
+    status: {
+        type:String,
+        enum:['pending','complete'],
+        default: 'pending'
     },
-    zipCode: {
-        type: Number,
-        require: true
-    },
-    panNumber: {
-        type: String,
-        require: true
-    },
-    panImgFront: {
-        type: String,
-        require: true
-    },
-    panImgBack: {
-        type: String,
-        require: true
-    },
-}, {
-    timestamps: true
+     latitude:{
+         type:String
+     },
+     longitude: {
+         type:String
+     },
+},{
+    timestamps:true     
 })
 
 module.exports = model('advertiser', advertiserSchema);
