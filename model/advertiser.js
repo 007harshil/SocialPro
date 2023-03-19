@@ -41,7 +41,7 @@ const advertiserSchema = new Schema({
     gender: {
         type: String,
         require:true,
-        enum['male','female'],
+        enum:['male','female'],
     },
     zipCode:{
         type:Number,
