@@ -39,10 +39,10 @@ const advertiserSchema = new Schema({
         type: Date, 
         required: true 
     },
-    // emailVerified: { 
-    //     type:Boolean,
-    //     default:false 
-    // },
+    emailVerified: { 
+        type:Boolean,
+        default:false 
+    },
     profilePic: { 
         type: String,  
     },
